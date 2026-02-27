@@ -1,0 +1,54 @@
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+
+
+<!-- Product Card the holder for the image and the text -->
+<VBox  xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.soomx1.ProductCardController"
+
+      spacing="-17"
+      alignment="TOP_LEFT"
+      prefWidth="240"
+      prefHeight="352"
+      styleClass="product-card">
+    <!-- _____________________________________________________ -->
+
+
+
+
+                <!-- Product Image -->
+                <ImageView fx:id="productImage"
+                           fitWidth="240"
+                           fitHeight="200"/>
+               <!-- _____________________________________________________ -->
+
+
+
+                 <Label fx:id="productName"/>
+
+                <!-- _____________________________________________________ -->
+
+
+                 <!-- Product Description -->
+                <Label fx:id="Product_Description"
+                       prefWidth="230"
+                       prefHeight="200"/>
+                 <!-- _____________________________________________________ -->
+
+
+                 <!-- Current Bid Title and Number -->
+                 <Label fx:id="Current_Bid_Title"/>
+                 <Label fx:id="Current_Bid_Number"/>
+                 <!-- _____________________________________________________ -->
+
+
+                 <!-- Total Bid Title and Number -->
+                 <Label fx:id="Total_Bids_Title"/>
+                 <Label fx:id="Total_Bids_Number" />
+                 <!-- _______________________________________________________-->
+
+
+
+</VBox>

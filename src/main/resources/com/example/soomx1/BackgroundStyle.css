@@ -1,0 +1,112 @@
+.root {
+    -fx-pref-width: 1728px;
+    -fx-pref-height: 1659px;
+    -fx-background-color:#D0D2E3;   /* darkest at top */
+                /* middle shade between dark and blue */
+                /* lighter blue at bottom */
+    }
+
+
+.product-card {
+
+    -fx-pref-width: 240px;
+    -fx-pref-height: 352px;
+
+    -fx-background-color: #C78438;
+    -fx-background-radius: 17;
+    -fx-background-insets: 0;
+
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 14, 0.3, 0, 6);
+
+
+}
+
+.product-image{
+    -fx-fit-width: 270px;
+    -fx-fit-height: 175px;
+    -fx-preserve-ratio: false;
+
+}
+
+
+#Active_Auctions {
+    -fx-pref-width: 257px;
+    -fx-pref-height: 90.92px;
+
+    -fx-background-color: white;
+
+    -fx-background-radius: 12px;
+    -fx-border-radius: 12px;
+
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 4, 0, 0, 4);
+}
+
+
+#Total_Bids{
+
+    -fx-pref-width: 257px;
+    -fx-pref-height: 90.92px;
+
+    -fx-background-color: white;
+
+    -fx-background-radius: 12px;
+    -fx-border-radius: 12px;
+
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 4, 0, 0, 4);
+}
+
+
+#Total_Value{
+
+    -fx-pref-width: 257px;
+    -fx-pref-height: 90.92px;
+
+    -fx-background-color: white;
+
+    -fx-background-radius: 12px;
+    -fx-border-radius: 12px;
+
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 4, 0, 0, 4);
+
+}
+
+#Head_Lable{
+    -fx-font-family: "Almarai";
+    -fx-font-style: normal;
+    -fx-font-weight: 400;
+    -fx-font-size: 22px;
+    -fx-text-fill: #696969;
+
+    /* الحجم */
+    -fx-pref-width: 374px;
+    -fx-pref-height: 60px;
+
+    /* لمكانه داخل AnchorPane */
+    -fx-layout-x: 40px;
+    -fx-layout-y: 99px;
+}
+
+
+#productName{
+    -fx-font-family: "Inter";
+    -fx-font-weight: 800;
+    -fx-font-size: 19px;
+
+    -fx-text-fill: #FFEFEF;
+
+    -fx-rotate: 0.2;
+    -fx-padding: 0 0 0 8;
+
+
+}
+
+#Product_Description{
+    -fx-font-family: "Inter";
+    -fx-font-style: normal;
+    -fx-font-weight: 300;
+    -fx-font-size: 12px;
+    -fx-text-fill: rgba(0, 4, 40, 0.80);
+    -fx-wrap-text: true;
+    -fx-alignment: top-left;
+    -fx-padding: 20 0 0 10; /* ↑10px من الأعلى */          /* محاذاة النص داخل الـ Label */
+}
