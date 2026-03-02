@@ -1,54 +1,40 @@
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.control.*?>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="TOP_LEFT" maxHeight="365" maxWidth="240" minHeight="365" minWidth="240" prefHeight="365" prefWidth="240" spacing="2" styleClass="product-card" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.soomx1.ProductCardController">
+
+    <!-- الصورة -->
+    <ImageView fx:id="productImage" fitHeight="240" fitWidth="240" />
+
+    <!-- باقي العناصر -->
+    <AnchorPane maxHeight="234" minHeight="234" prefHeight="234" prefWidth="240">
+
+        <Label fx:id="productName" layoutX="0" layoutY="-43" prefWidth="235" />
+
+        <Label fx:id="Product_Description" layoutX="0" layoutY="-30" maxHeight="60" prefWidth="240" wrapText="true" />
+
+        <Label fx:id="Current_Bid_Title" layoutX="10" layoutY="55" />
+
+        <Label fx:id="Current_Bid_Number" layoutX="150" layoutY="80" />
+
+        <Label fx:id="Total_Bids_Title" layoutX="3" layoutY="77" />
+
+        <Label fx:id="Current_Bid_Price" layoutX="7" layoutY="70" />
+
+        <Label fx:id="Total_Bids_Number" layoutX="5" layoutY="77" />
+
+        <Button fx:id="Place_Bid" layoutX="130" layoutY="70" onAction="#handlePlaceBid" text="Place Bid" />
 
 
-<!-- Product Card the holder for the image and the text -->
-<VBox  xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.soomx1.ProductCardController"
-
-      spacing="-17"
-      alignment="TOP_LEFT"
-      prefWidth="240"
-      prefHeight="352"
-      styleClass="product-card">
-    <!-- _____________________________________________________ -->
+        <Spinner fx:id="Spinner_Price_Min_Teller" layoutX="10" layoutY="69" />
 
 
-
-
-                <!-- Product Image -->
-                <ImageView fx:id="productImage"
-                           fitWidth="240"
-                           fitHeight="200"/>
-               <!-- _____________________________________________________ -->
-
-
-
-                 <Label fx:id="productName"/>
-
-                <!-- _____________________________________________________ -->
-
-
-                 <!-- Product Description -->
-                <Label fx:id="Product_Description"
-                       prefWidth="230"
-                       prefHeight="200"/>
-                 <!-- _____________________________________________________ -->
-
-
-                 <!-- Current Bid Title and Number -->
-                 <Label fx:id="Current_Bid_Title"/>
-                 <Label fx:id="Current_Bid_Number"/>
-                 <!-- _____________________________________________________ -->
-
-
-                 <!-- Total Bid Title and Number -->
-                 <Label fx:id="Total_Bids_Title"/>
-                 <Label fx:id="Total_Bids_Number" />
-                 <!-- _______________________________________________________-->
-
-
+    </AnchorPane>
 
 </VBox>

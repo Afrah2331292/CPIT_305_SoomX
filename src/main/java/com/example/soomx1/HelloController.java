@@ -7,13 +7,16 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.*;
 
-public class HelloController {
+public class HelloController  {
+
 
 
 
@@ -34,7 +37,11 @@ public class HelloController {
     @FXML
     private FlowPane productsContainer;
 
+    @FXML
+    private Spinner<Integer> Spinner_Price_Min_Teller;
 
+    SpinnerValueFactory<Integer> SVF
+             = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,11,1);
 
 
     @FXML
@@ -48,27 +55,39 @@ public class HelloController {
 
     @FXML
     public void initialize() {
+        BufferedReader br=null;
+        try {
+            InputStream input = getClass().getResourceAsStream(
+                    "/com/example/soomx1/Products_Info.txt"
+            );
 
-        for (int i = 1; i <= 6; i++) {
+            br = new BufferedReader(new InputStreamReader(input));
+            String productLine;
 
-            try {
+            while ((productLine = br.readLine()) != null) {
+
+                String[] parts = productLine.split("\\|");
+
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("ProductCard.fxml"));
                 Parent card = loader.load();
 
-
                 ProductCardController controller = loader.getController();
 
-                controller.setData("Vintage Luxury Watch",
-                        getClass().getResource("/com/example/soomx1/images/Saudi_Arabia_Ai.jpg").toExternalForm()
-                        ,"Rare 1960s timepiece in mint condition with original box");
+                controller.setData(
+                        parts[1], // name
+                        getClass().getResource(parts[0] + ".jpg").toExternalForm(), // image
+                        parts[2], // description
+                        "Current Bid", // ثابت
+                        "Total Bids",  // ثابت
+                        parts[3], // price
+                        parts[4]  // bids count
+                );
 
-
-
-                        productsContainer.getChildren().add(card);
-
-            } catch (IOException e) {
-                e.printStackTrace();
+                productsContainer.getChildren().add(card);
             }
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

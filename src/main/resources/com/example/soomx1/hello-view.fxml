@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
@@ -12,18 +11,12 @@
 <AnchorPane prefHeight="1000" prefWidth="1728" stylesheets="@BackgroundStyle.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.soomx1.HelloController">
 
    <!-- ScrollPane for all the page so that I can scroll down -->
-   <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="0" layoutY="0" pannable="true" prefHeight="1000" prefWidth="1728" vbarPolicy="NEVER">
+   <ScrollPane fx:id="myScrollPane" fitToWidth="true" hbarPolicy="NEVER" layoutX="0" layoutY="0" pannable="true" prefHeight="1000" prefWidth="1728" vbarPolicy="NEVER">
       <content>
          <AnchorPane prefHeight="2000" prefWidth="1728">
 
             <!-- FlowPane for the Products and bid Ads -->
-            <FlowPane fx:id="productsContainer" hgap="62" layoutX="52.0" layoutY="292.0" prefHeight="600" prefWidth="725.0" vgap="25" /> <!-- الطول كبير ليمكن النزول -->
-            <!-- _____________________________________________________ -->
-
-
-
-            <!-- زر move -->
-            <Button fx:id="move" layoutX="149.0" layoutY="954.0" mnemonicParsing="false" onAction="#move" prefHeight="30" prefWidth="75" text="move" />
+            <FlowPane fx:id="productsContainer" hgap="62" layoutX="52.0" layoutY="292.0" prefHeight="600" prefWidth="914.0" vgap="25" />
 
             <!-- TextField -->
             <TextField fx:id="Lab" layoutX="284.0" layoutY="919.0" onAction="#clic" prefHeight="86" prefWidth="326" />
@@ -31,25 +24,22 @@
             <!-- Label -->
             <Label fx:id="welcomeText" layoutX="50" layoutY="250" prefHeight="30" prefWidth="273" />
 
-            <!-- زر آخر -->
-            <Button layoutX="58.0" layoutY="947.0" onAction="#clickbutton" prefHeight="30" prefWidth="75" text="Afraho!" />
-
 
 
 
             <!-- Images و TextFields الأخرى -->
             <!-- the logo SoomX -->
             <!-- __________________________________________________________________________-->
-            <ImageView fitHeight="285.0" fitWidth="288.0" layoutX="632.0" layoutY="-60.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="SoomX_Logo" fitHeight="285.0" fitWidth="288.0" layoutX="632.0" layoutY="-60.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/Logo.png" />
+                  <Image url="@images/SoomX_Logo.png" />
                </image>
             </ImageView>
 
-
-
-            <!-- THe Active_Auctions Lable and the fireLogo-->
-            <Label fx:id="Active_Auctions" layoutX="50.0" layoutY="165.0" prefHeight="91.0" prefWidth="322.0" />
+      
+      
+                  <!-- THe Active_Auctions Lable and the fireLogo-->
+            <Label fx:id="Active_Auctions" alignment="TOP_LEFT" contentDisplay="BOTTOM" graphicTextGap="9.0" layoutX="50.0" layoutY="165.0" lineSpacing="10.0" prefHeight="91.0" prefWidth="322.0" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="165.0" />
 
             <ImageView fx:id="firelogo" fitHeight="64" fitWidth="82" layoutX="223.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -95,6 +85,16 @@
                   <Image url="@images/Total_Value_Logo.png" />
                </image>
             </ImageView>
+            <Label fx:id="Active_Auctions_Text" layoutX="65.0" layoutY="169.0" prefHeight="38.0" prefWidth="97.0" text="Active Auctions" />
+            <Label fx:id="Total_Bids_Txet" layoutX="362.0" layoutY="169.0" prefHeight="38.0" prefWidth="66.0" text="Total Bids" />
+            <Label fx:id="Total_Value_Text" layoutX="659.0" layoutY="170.0" prefHeight="38.0" prefWidth="75.0" text="Total Value" />
+            <ImageView fitHeight="54.0" fitWidth="88.0" layoutX="34.0" layoutY="23.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/ProfileLogo.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="Hi" layoutX="112.0" layoutY="28.0" text="Hi, " />
+            <Label fx:id="User_Name" layoutX="152.0" layoutY="27.0" text="Afrah" />
 
             <!-- _____________________________________________________ -->
 
