@@ -1,0 +1,234 @@
+.product-card {
+
+
+
+    /* برتقالي زاهي متدرج */
+    -fx-background-color: linear-gradient(to bottom right, #FFB347, #FF8C00);
+
+    /* زوايا ناعمة */
+    -fx-background-radius: 25;
+    -fx-border-radius: 25;
+
+    /* مسافة داخلية */
+    -fx-padding: 15;
+    -fx-spacing: 10;
+
+    /* ظل احترافي عميق */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 25, 0.4, 0, 8);
+
+}
+.root {
+    -fx-background-color: linear-gradient(
+            to bottom right,
+            rgb(244, 231, 211),
+            rgb(227, 200, 173)
+    );
+}
+.product-image:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 20, 0.4, 0, 6);
+}
+.product-title {
+    -fx-font-family: "Inter";
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+.bid-info {
+    -fx-font-family: "Inter";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}.product-description {
+     -fx-font-family: "Inter";
+     -fx-font-size: 13px;
+     -fx-font-weight: 400;
+     -fx-text-fill: rgba(255,255,255,0.85);
+ }
+ .input-field {
+     -fx-background-color: white;
+     -fx-background-radius: 12;
+     -fx-border-radius: 12;
+     -fx-border-color: transparent;
+     -fx-padding: 6 10 6 10;
+     -fx-font-family: "Inter";
+     -fx-font-size: 13px;
+ }
+
+ .input-field:focused {
+     -fx-border-color: #FF8C00;
+     -fx-border-width: 2;
+ }
+ .input-field {
+     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 6, 0.2, 0, 2);
+ }
+ .date-picker {
+     -fx-background-color: white;
+     -fx-background-radius: 12;
+     -fx-border-radius: 12;
+     -fx-border-color: transparent;
+ }
+
+ .date-picker .text-field {
+     -fx-background-color: transparent;
+     -fx-font-family: "Inter";
+     -fx-font-size: 13px;
+ }
+
+ .date-picker:focused {
+     -fx-border-color: #FF8C00;
+     -fx-border-width: 2;
+ }
+ .input-field {
+     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 6, 0.2, 0, 2);
+ }
+ /* =======================
+    TOP BAR
+ ======================= */
+
+ .top-bar {
+     -fx-background-color: linear-gradient(
+         to right,
+         rgb(230, 210, 185),
+         rgb(210, 185, 150)
+     );
+
+     -fx-padding: 12 25;
+     -fx-alignment: center-left;
+
+     /* ظل خفيف تحت الشريط */
+     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 12, 0.2, 0, 4);
+ }
+
+
+ /* =======================
+    WELCOME LABEL
+ ======================= */
+
+ .welcome-label {
+     -fx-font-family: "Inter";
+     -fx-font-size: 18px;
+     -fx-font-weight: bold;
+     -fx-text-fill: rgb(80, 60, 40);
+ }
+
+
+ /* =======================
+    LOGOUT BUTTON
+ ======================= */
+
+ .logout-button {
+     -fx-background-color: linear-gradient(
+         to bottom,
+         rgb(40,40,40),
+         rgb(0,0,0)
+     );
+
+     -fx-text-fill: white;
+     -fx-font-family: "Inter";
+     -fx-font-size: 13px;
+     -fx-font-weight: bold;
+
+     -fx-background-radius: 12;
+     -fx-border-radius: 12;
+
+     -fx-padding: 6 18;
+     -fx-cursor: hand;
+
+     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 8, 0.3, 0, 3);
+ }
+
+
+ /* Hover Effect */
+ .logout-button:hover {
+     -fx-background-color: rgb(30,30,30);
+ }
+
+
+ /* Press Effect */
+ .logout-button:pressed {
+     -fx-background-color: rgb(60,60,60);
+ }
+ .product-name {
+     -fx-font-family: "Inter";
+     -fx-font-size: 18px;
+     -fx-font-weight: bold;
+     -fx-text-fill: rgb(60, 45, 30);   /* بني غامق دافئ */
+ }
+ .product-name {
+     -fx-border-color: transparent transparent rgb(200,170,130) transparent;
+     -fx-border-width: 0 0 2 0;
+     -fx-padding: 5 0 5 0;
+ }
+ .name-bar {
+
+     -fx-background-color: rgba(200, 170, 130, 0.6); /* بيج غامق شفاف */
+
+     -fx-background-radius: 14;
+
+     -fx-padding: 8 0 8 0;
+
+     -fx-alignment: center;
+
+
+
+     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0.2, 0, 2);
+ }
+ /* ==========================
+    TABLE MAIN
+ ========================== */
+
+ ./* الجدول نفسه */
+  .custom-table {
+      -fx-background-color: white;
+      -fx-background-radius: 18;
+      -fx-border-radius: 18;
+      -fx-padding: 5;
+      -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 20, 0.2, 0, 6);
+  }
+
+  /* الهيدر */
+  .custom-table .column-header-background {
+      -fx-background-color: rgb(255, 170, 60);
+      -fx-background-radius: 18 18 0 0;
+  }
+
+  .custom-table .column-header,
+  .custom-table .filler {
+      -fx-background-color: transparent;
+  }
+
+  .custom-table .column-header .label {
+      -fx-text-fill: black;
+      -fx-font-weight: bold;
+      -fx-font-size: 14px;
+  }
+
+  /* الصفوف الأساسية */
+  .custom-table .table-row-cell {
+      -fx-background-color: white;
+      -fx-border-color: transparent;
+      -fx-padding: 5 0 5 0;
+  }
+
+  /* الصفوف الفردية (بيج خفيف بدل رمادي) */
+  .custom-table .table-row-cell:odd {
+      -fx-background-color: rgb(248, 240, 230);
+  }
+
+  /* عند المرور بالفأرة */
+  .custom-table .table-row-cell:hover {
+      -fx-background-color: rgb(255, 220, 170);
+  }
+
+  /* الصف المختار */
+  .custom-table .table-row-cell:selected {
+      -fx-background-color: rgb(255, 185, 95);
+  }
+
+  /* نص الخلايا */
+  .custom-table .table-cell {
+      -fx-text-fill: rgb(60, 50, 40);
+      -fx-font-size: 13px;
+  }
