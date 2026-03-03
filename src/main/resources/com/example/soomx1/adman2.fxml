@@ -84,7 +84,7 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Label styleClass="welcome-label" text="Welcome Admin 👋">
+            <Label prefHeight="27.0" prefWidth="170.0" styleClass="welcome-label" text="Welcome Admin 👋">
                <font>
                   <Font size="16.0" />
                </font>

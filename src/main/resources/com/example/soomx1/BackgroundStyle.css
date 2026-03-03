@@ -281,3 +281,12 @@
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 3, 0, 0, 4);
 }
 
+#log_Out{
+    -fx-pref-width: 69px;
+    -fx-pref-height: 18px;
+
+    -fx-background-color: #172531;
+    -fx-background-radius: 12px;
+
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 5, 0, 0, 5);
+}

@@ -15,13 +15,7 @@ import javafx.stage.Stage;
 
 import java.io.*;
 
-public class HelloController  {
-
-
-
-
-
-
+public class HelloController {
 
 
     @FXML
@@ -41,7 +35,7 @@ public class HelloController  {
     private Spinner<Integer> Spinner_Price_Min_Teller;
 
     SpinnerValueFactory<Integer> SVF
-             = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,11,1);
+            = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 11, 1);
 
 
     @FXML
@@ -50,12 +44,9 @@ public class HelloController  {
     }
 
 
-
-
-
     @FXML
     public void initialize() {
-        BufferedReader br=null;
+        BufferedReader br = null;
         try {
             InputStream input = getClass().getResourceAsStream(
                     "/com/example/soomx1/Products_Info.txt"
@@ -93,7 +84,7 @@ public class HelloController  {
 
 
     @FXML
-    void move(ActionEvent event)  throws IOException {
+    void move(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("screen.fxml"));
         Parent root = loader.load();
 
@@ -102,9 +93,9 @@ public class HelloController  {
 
         Scene scene = new Scene(root);
         String txt = Lab.getText();
-       // scene.setUserData(txt);
+        // scene.setUserData(txt);
 
-       // controller.setData(Lab.getText());
+        // controller.setData(Lab.getText());
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         controller.setStage(stage);
@@ -115,13 +106,22 @@ public class HelloController  {
     }
 
 
-
-
-
     @FXML
     void clickbutton(ActionEvent event) {
-         welcomeText.setText("Welcome");
-         Lab.setText("welcome Afraho");
+        welcomeText.setText("Welcome");
+        Lab.setText("welcome Afraho");
     }
 
+    @FXML
+    void Log_Out_Action(ActionEvent event) throws IOException{
+
+
+        Parent root = FXMLLoader.load(Main.class.getResource("SignUp.fxml"));
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.show();
+    }
 }

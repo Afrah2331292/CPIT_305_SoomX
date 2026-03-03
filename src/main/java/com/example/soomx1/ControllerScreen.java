@@ -4,10 +4,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-import javafx.event.ActionEvent;
 import java.io.IOException;
 
 public class ControllerScreen {
@@ -15,18 +13,9 @@ public class ControllerScreen {
    private Stage stage;
    private String data;
 
-    public String getData() {
-        return data;
-    }
 
-    public void setData(String data) {
-        this.data = data;
-        displayy.setText(data);
-    }
 
-    public Stage getStage() {
-        return stage;
-    }
+
 
     public void setStage(Stage stage) {
         this.stage = stage;
