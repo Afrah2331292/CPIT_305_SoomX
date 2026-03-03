@@ -3,10 +3,18 @@ package com.example.soomx1;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
+
+import javafx.event.ActionEvent;
+import java.io.IOException;
 
 public class AdminController {
 
@@ -74,19 +82,19 @@ public class AdminController {
     // Change label when Product 1 is clicked
     @FXML
     private void selectProduct1(MouseEvent event) {
-        selectedProductLabel.setText("Product 1");
+        selectedProductLabel.setText("White Rare Falcon");
     }
 
     // Change label when Product 2 is clicked
     @FXML
     private void selectProduct2(MouseEvent event) {
-        selectedProductLabel.setText("Product 2");
+        selectedProductLabel.setText("Desert Camel");
     }
 
     // Change label when Product 3 is clicked
     @FXML
     private void selectProduct3(MouseEvent event) {
-        selectedProductLabel.setText("Product 3");
+        selectedProductLabel.setText("Ancient Saudi Painting");
     }
 
     // Apply rounded corners to image
@@ -109,8 +117,19 @@ public class AdminController {
         int currentRows = items.size();
 
         for (int i = currentRows; i < DESIRED_ROWS; i++) {
-            //   items.add(new Bid("", "", "", ""));
+              items.add(new Bid("", "", "", ""));
         }
+    }
+
+
+    @FXML
+    private void goToSignIn(ActionEvent event) throws IOException {
+
+        Parent root = FXMLLoader.load(getClass().getResource("signUp.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 }
 
