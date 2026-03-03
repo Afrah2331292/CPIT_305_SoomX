@@ -37,6 +37,7 @@ public class signUpController {
         scene = new Scene(root);
 
         stage.setScene(scene);
+        stage.centerOnScreen();
         stage.show();
     }
 
@@ -45,16 +46,13 @@ public class signUpController {
     @FXML
     public void switchtoUser(ActionEvent event) throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("hello-view.fxml"));
-        Parent root = loader.load();
+        Parent root = FXMLLoader.load(Main.class.getResource("hello-view.fxml"));
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-
-        stage.setScene(scene);
+        stage.setScene(new Scene(root, 950, 700));
+        stage.centerOnScreen();
         stage.show();
     }
-
 
     // cancel login
     public  void  Cancel(ActionEvent event){

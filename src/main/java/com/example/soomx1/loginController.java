@@ -35,13 +35,11 @@ public class loginController {
     @FXML
     public void switchtoAdmin(ActionEvent event) throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("adman2.fxml"));
-        Parent root = loader.load();
+        Parent root = FXMLLoader.load(Main.class.getResource("adman2.fxml"));
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-
-        stage.setScene(scene);
+        stage.setScene(new Scene(root, 950, 700));
+        stage.centerOnScreen();
         stage.show();
     }
 

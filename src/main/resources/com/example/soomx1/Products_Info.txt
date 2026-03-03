@@ -1,4 +1,4 @@
 /com/example/soomx1/images/Saudi_Arabia_Ai|White Rare Falcon|A rare white falcon, very valuable and majestic.|$1200|7
 /com/example/soomx1/images/Camel_image|Desert Camel|A strong desert camel, perfect for long journeys and desert life.|$800|5
 /com/example/soomx1/images/Camel_paint_image|Ancient Saudi Painting|A beautiful ancient heritage painting, showcasing traditional art and history.|$1500|4
-/com/example/soomx1/images/Sword_image|Ancient Sharp Edged Sword|A medieval double-edged sword, historically significant and well-preserved.|$2200|6
+/com/example/soomx1/images/Sword_image|Ancient Sharp Sword|A medieval sharp sword, historically significant and well-preserved.|$2200|6

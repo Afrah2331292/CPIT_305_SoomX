@@ -89,13 +89,12 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <ImageView fitHeight="43.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fitHeight="50.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/SoomX_Logo.png" />
-               </image>
-            </ImageView>
          </children>
       </HBox>
+      <ImageView fx:id="logo_SoomX" fitHeight="215.0" fitWidth="308.0" layoutX="704.0" layoutY="-53.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/SoomX_Logo.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
