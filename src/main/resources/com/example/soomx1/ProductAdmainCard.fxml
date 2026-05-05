@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="TOP_LEFT" maxHeight="365" maxWidth="240" minHeight="365" minWidth="240" prefHeight="365" prefWidth="240" spacing="0" styleClass="product-card" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.soomx1.ProductAdmainCardController">
+
+    <!-- الصورة -->
+    <ImageView fx:id="productImage" fitHeight="240" fitWidth="240" preserveRatio="false" smooth="true" />
+
+    <!-- باقي العناصر -->
+    <AnchorPane maxHeight="234" minHeight="234" prefHeight="234" prefWidth="240">
+
+        <Label fx:id="productName" layoutX="0" layoutY="-43" prefWidth="235" />
+
+        <Label fx:id="Product_Description" layoutX="10" layoutY="-30" maxHeight="60" prefWidth="240" wrapText="true" />
+
+        <Label fx:id="Current_Bid_Title" layoutX="10" layoutY="55" />
+
+
+        <Label fx:id="Total_Bids_Title" layoutX="3" layoutY="77" />
+
+        <Label fx:id="Current_Bid_Price" layoutX="7" layoutY="70" />
+
+        <Label fx:id="Total_Bids_Number" layoutX="5" layoutY="77" />
+
+
+
+
+    </AnchorPane>
+
+</VBox>

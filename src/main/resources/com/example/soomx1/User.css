@@ -12,8 +12,7 @@
 
 .product-card {
 
-    -fx-pref-width: 240px;
-    -fx-pref-height: 42px;
+
     -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, #E2B063 70%, #A8763F 100%);
 
     -fx-background-radius: 22;
@@ -32,8 +31,8 @@
 
 
 .product-image{
-    -fx-fit-width: 260px;
-    -fx-fit-height: 175px;
+    -fx-fit-width: 240px;
+    -fx-fit-height: 240px;
     -fx-preserve-ratio: false;
 
 }

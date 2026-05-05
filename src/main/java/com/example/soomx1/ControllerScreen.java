@@ -31,7 +31,7 @@ public class ControllerScreen {
 
     @FXML
     public void buttonBck(javafx.event.ActionEvent actionEvent) throws IOException{
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("User.fxml"));
 
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         stage.setScene(scene);

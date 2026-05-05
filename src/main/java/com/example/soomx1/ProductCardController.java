@@ -16,18 +16,15 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import soomXDatabase.BidDAO;
 
 import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ProductCardController implements Initializable {
+    private int productID;
 
-    @FXML
-    private Label Current_Bid_Number;
-
-    @FXML
-    private Button Place_Bid;
 
     @FXML
     private Label Current_Bid_Price;
@@ -56,7 +53,7 @@ public class ProductCardController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        // قيمة مؤقتة إلى أن يتم استدعاء setData
+        // قيمة مؤقتة إلى أن يتم استدعاء setDat
         SpinnerValueFactory<Integer> valueFactory =
                 new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 1000, 1);
 
@@ -69,6 +66,7 @@ public class ProductCardController implements Initializable {
 
             if (newValue < vf.getMin()) {
                 vf.setValue(vf.getMin());
+
             }
         });
     }
@@ -138,6 +136,19 @@ public class ProductCardController implements Initializable {
 
         int bidValue = Spinner_Price_Min_Teller.getValue();
 
+        String username = Session.currentUsername;
+
+        int id = getProductID();
+
+        System.out.println("User bidding: " + username);
+        System.out.println("Product ID: " + id);
+
+        BidDAO.insertBid(bidValue,username,id);
+
+
+
+
+
         // تحديث السعر الحالي
         Current_Bid_Price.setText(String.valueOf(bidValue));
          //dkkfkf
@@ -157,6 +168,21 @@ public class ProductCardController implements Initializable {
 
         Spinner_Price_Min_Teller.setValueFactory(newFactory);
     }
+
+
+
+
+
+
+
+    public void setProductID(int productID) {
+        this.productID = productID;
+    }
+
+    public int getProductID() {
+        return productID;
+    }
+
 
 
 }

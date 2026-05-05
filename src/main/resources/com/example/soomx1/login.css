@@ -1,0 +1,66 @@
+.Loginbox {
+    -fx-background-color: rgba(0, 0, 0, 0.70);
+    -fx-background-radius: 25;
+    -fx-border-radius: 25;
+    -fx-padding: 35;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 30, 0.2, 0, 10);
+}
+#userNameTextFiled {
+    -fx-background-color: rgba(0, 0, 0, 0.70);
+    -fx-background-radius: 25;
+    -fx-border-radius: 25;
+    -fx-border-width: 0.25 ;
+    -fx-text-fill: rgba(255, 255, 255);
+    -fx-prompt-text-fill: rgba(255, 255, 255,0.70%);
+
+}
+
+#passwordPasswordFiled {
+    -fx-background-color: rgba(0, 0, 0, 0.70);
+    -fx-background-radius: 25;
+    -fx-border-radius: 25;
+    -fx-border-width: 0.25 ;
+    -fx-text-fill: rgba(255, 255, 255);
+    -fx-prompt-text-fill: rgba(255, 255, 255,0.70%);
+
+}
+
+#userNameTextFiled {
+    -fx-background-color: rgba(0, 0, 0, 0.70);
+    -fx-background-radius: 25;
+    -fx-border-radius: 25;
+    -fx-border-width: 0.25 ;
+    -fx-text-fill: rgba(255, 255, 255);
+    -fx-prompt-text-fill: rgba(255, 255, 255,0.70%);
+
+}
+
+#EmailTextFiled{
+    -fx-background-color: rgba(0, 0, 0, 0.70);
+    -fx-background-radius: 25;
+    -fx-border-radius: 25;
+    -fx-border-width: 0.25 ;
+    -fx-text-fill: rgba(255, 255, 255);
+    -fx-prompt-text-fill: rgba(255, 255, 255,0.70%);
+}
+
+#phonenumberTextFiled{
+    -fx-background-color: rgba(0, 0, 0, 0.70);
+    -fx-background-radius: 25;
+    -fx-border-radius: 25;
+    -fx-border-width: 0.25 ;
+    -fx-text-fill: rgba(255, 255, 255);
+    -fx-prompt-text-fill: rgba(255, 255, 255,0.70%);
+
+}
+
+#passwordPasswordFiled11{
+    -fx-background-color: rgba(0, 0, 0, 0.70);
+    -fx-background-radius: 25;
+    -fx-border-radius: 25;
+    -fx-border-width: 0.25 ;
+    -fx-text-fill: rgba(255, 255, 255);
+    -fx-prompt-text-fill: rgba(255, 255, 255,0.70%);
+
+
+}

@@ -10,14 +10,23 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import javafx.event.ActionEvent;
+import soomXDatabase.DBConnection;
+
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class AdminController {
-
+    @FXML private HBox productsBar;
     @FXML private Label selectedProductLabel;
 
     @FXML private Label highestBidLabel;
@@ -49,34 +58,53 @@ public class AdminController {
 
     // Runs automatically after FXML loads
     public void initialize() {
+        try (
+                Connection con = DBConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement("SELECT * FROM Product");
+                ResultSet rs = ps.executeQuery();
+                InputStream input = getClass().getResourceAsStream("/com/example/soomx1/Products_Info.txt");
+                BufferedReader br = new BufferedReader(new InputStreamReader(input))
+        ) {
 
-        // Set initial bid values
-        highestBidLabel.setText("Highest Bid: 7000 SAR");
-        totalBidsLabel.setText("Total Bids: 25");
+            String productLine;
 
-        highestBidLabel2.setText("Highest Bid: 8000 SAR");
-        totalBidsLabel2.setText("Total Bids: 30");
+            while (rs.next() && (productLine = br.readLine()) != null) {
 
-        highestBidLabel3.setText("Highest Bid: 9000 SAR");
-        totalBidsLabel3.setText("Total Bids: 20");
+                // من الداتابيس
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String description = rs.getString("description");
+                double price = rs.getDouble("price");
 
-        // Set time placeholders
-        product1TimeField.setPromptText("HH:MM");
-        product2TimeField.setPromptText("HH:MM");
-        product3TimeField.setPromptText("HH:MM");
+                // من الملف فقط للصورة
+                String[] parts = productLine.split("\\|");
+                String imagePath = getClass()
+                        .getResource(parts[0] + ".jpg")
+                        .toExternalForm();
 
-        // Make images rounded
-        makeRounded(productImage1);
-        makeRounded(productImage2);
-        makeRounded(productImage3);
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("ProductAdmainCard.fxml"));
+                Parent card = loader.load();
 
-        // Make sure table has a list
-        if (tableView.getItems() == null) {
-            tableView.setItems(FXCollections.observableArrayList());
+                ProductAdmainCardController controller = loader.getController();
+
+                controller.setData(
+                        name,                    // من DB
+                        imagePath,               // من الملف
+                        description,             // من DB
+                        "Current Bid",
+                        "Total Bids",
+                        String.valueOf(price),   // من DB
+                        "0"
+                );
+
+                controller.setProductID(id);
+
+                productsBar.getChildren().add(card);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-        // Fill table with empty rows
-        fillEmptyRows();
     }
 
     // Change label when Product 1 is clicked

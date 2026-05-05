@@ -15,13 +15,20 @@ import java.io.IOException;
 
 public class loginController {
 
-
-
-    @FXML
-
     private Scene scene;
     private Stage stage;
     private Parent root;
+
+
+
+
+    @FXML
+    private TextField userNameTextFiled;
+    @FXML
+    private PasswordField passwordPasswordFiled;
+//    public Label warnning;
+
+
 //    FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("signUp.fxml"));
     private Button adminLoginButton;
 
@@ -35,26 +42,43 @@ public class loginController {
     @FXML
     public void switchtoAdmin(ActionEvent event) throws IOException {
 
-        Parent root = FXMLLoader.load(Main.class.getResource("adman2.fxml"));
+        String username = userNameTextFiled.getText();
+        String password = passwordPasswordFiled.getText();
 
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(root, 950, 700));
-        stage.centerOnScreen();
-        stage.show();
+        if (soomXDatabase.UserDAO.login(username, password)) {
+
+            Session.currentUsername = username;
+
+            System.out.println("Logged in as: " + username);
+            int roleValue = soomXDatabase.UserDAO.getRole(username);
+
+
+            // The Admain his role is equal to 1
+            if(roleValue == 1){
+                Parent root = FXMLLoader.load(Main.class.getResource("adman2.fxml"));
+
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(new Scene(root, 950, 700));
+                stage.centerOnScreen();
+                stage.show();
+
+              // The Normal User his role equal to 2
+            } else if (roleValue == 2) {
+                Parent root = FXMLLoader.load(Main.class.getResource("hello-view.fxml"));
+
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(new Scene(root, 950, 700));
+                stage.centerOnScreen();
+                stage.show();
+
+            }
+        } else {
+            System.out.println("❌ Wrong username or password");
+        }
     }
 
 
 
-
-
-
-
-
-
-    @FXML
-    private TextField userNameTextFiled;
-    @FXML
-    private PasswordField passwordPasswordFiled;
 //    public Label warnning;
 
     public void  loginButtonAction(ActionEvent event){

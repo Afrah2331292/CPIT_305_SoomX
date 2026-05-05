@@ -10,7 +10,7 @@
     -fx-border-radius: 25;
 
     /* مسافة داخلية */
-    -fx-padding: 15;
+    -fx-padding: 0;
     -fx-spacing: 10;
 
     /* ظل احترافي عميق */
@@ -238,3 +238,6 @@
 
   }
 
+#productsBar {
+    -fx-padding: 30 0  0 30;
+}
