@@ -51,11 +51,10 @@ public class ProductAdmainCardController {
 
     public void setData(String name,
                         String imagePath,
-                        String productDescription,
-                        String currentBidTitle,
-                        String totalBidsTitle,
-                        String currentBidPrice,
-                        String totalBidsNumber) {
+                        String productDescription)
+
+
+    {
         productName.setWrapText(true); // مهم جداً عشان النص ينزل سطر
         productName.setMinWidth(Region.USE_COMPUTED_SIZE);
         productName.setMaxWidth(Double.MAX_VALUE);
@@ -63,10 +62,6 @@ public class ProductAdmainCardController {
         productName.setText(name);
         productImage.setImage(new Image(imagePath));
         Product_Description.setText(productDescription);
-        Current_Bid_Title.setText(currentBidTitle);
-        Total_Bids_Title.setText(totalBidsTitle);
-        Current_Bid_Price.setText(currentBidPrice);
-        Total_Bids_Number.setText(totalBidsNumber);
 
 
 

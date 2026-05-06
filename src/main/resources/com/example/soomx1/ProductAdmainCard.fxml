@@ -17,14 +17,10 @@
 
         <Label fx:id="Product_Description" layoutX="10" layoutY="-30" maxHeight="60" prefWidth="240" wrapText="true" />
 
-        <Label fx:id="Current_Bid_Title" layoutX="10" layoutY="55" />
 
 
-        <Label fx:id="Total_Bids_Title" layoutX="3" layoutY="77" />
 
-        <Label fx:id="Current_Bid_Price" layoutX="7" layoutY="70" />
 
-        <Label fx:id="Total_Bids_Number" layoutX="5" layoutY="77" />
 
 
 

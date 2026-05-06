@@ -49,7 +49,7 @@ public class UserController {
                 Connection con = DBConnection.getConnection();
                 PreparedStatement ps = con.prepareStatement("SELECT * FROM Product");
                 ResultSet rs = ps.executeQuery();
-                InputStream input = getClass().getResourceAsStream("/com/example/soomx1/Products_Info.txt");
+                InputStream input = new FileInputStream("src/main/resources/com/example/soomx1/Products_Info.txt");
                 BufferedReader br = new BufferedReader(new InputStreamReader(input))
         ) {
 
@@ -57,7 +57,8 @@ public class UserController {
 
             while (rs.next() && (productLine = br.readLine()) != null) {
 
-                // من الداتابيس
+
+                // retrive from the database
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 String description = rs.getString("description");

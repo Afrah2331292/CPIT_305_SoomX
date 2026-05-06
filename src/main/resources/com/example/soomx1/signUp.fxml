@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0"  stylesheets="@login.css" prefWidth="900.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.soomx1.signUpController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" stylesheets="@login.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.soomx1.signUpController">
 
    <children>
 
@@ -32,18 +32,18 @@
          </Label>
 
          <!-- Fields -->
-         <TextField fx:id="userNameTextFiled" prefWidth="120" maxWidth="300" prefHeight="25" promptText="Username" style="-fx-border-color: #a86c17;" />
+         <TextField fx:id="userNameTextFiled" maxWidth="300" prefHeight="25" prefWidth="120" promptText="Username" style="-fx-border-color: #a86c17;" />
 
-         <TextField fx:id="EmailTextFiled" prefWidth="120" maxWidth="300" promptText="Email" style="-fx-background-radius: 8; -fx-border-color: #a86c17;" />
+         <TextField fx:id="EmailTextFiled" maxWidth="300" prefWidth="120" promptText="Email" style="-fx-background-radius: 8; -fx-border-color: #a86c17;" />
 
-         <TextField fx:id="phonenumberTextFiled" prefWidth="120" maxWidth="300" promptText="Phone number" style="-fx-background-radius: 8;-fx-border-color: #a86c17; " />
+         <TextField fx:id="phonenumberTextFiled" maxWidth="300" prefWidth="120" promptText="Phone number" style="-fx-background-radius: 8;-fx-border-color: #a86c17; " />
 
-         <PasswordField fx:id="passwordPasswordFiled11" prefWidth="120" maxWidth="300" promptText="Password" style="-fx-background-radius: 8;-fx-border-color: #a86c17;" />
+         <PasswordField fx:id="passwordPasswordFiled11" maxWidth="300" prefWidth="120" promptText="Password" style="-fx-background-radius: 8;-fx-border-color: #a86c17;" />
 
          <!-- Buttons -->
          <Button fx:id="SignUpButton" onAction="#switchtoUser" prefWidth="230" style="-fx-background-color: #BD7C20; -fx-text-fill: white; -fx-background-radius: 10;" text="Sign up" />
 
-         <Button fx:id="adminLoginButton" onAction="#AdminLogin" prefWidth="230" style="-fx-background-color: #BD7C20; -fx-text-fill: white; -fx-background-radius: 10;" text="Admin Login" />
+         <Button fx:id="LoginButton" onAction="#Login" prefWidth="230" style="-fx-background-color: #BD7C20; -fx-text-fill: white; -fx-background-radius: 10;" text="Login" />
 
       </VBox>
 

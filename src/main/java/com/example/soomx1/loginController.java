@@ -15,9 +15,7 @@ import java.io.IOException;
 
 public class loginController {
 
-    private Scene scene;
     private Stage stage;
-    private Parent root;
 
 
 

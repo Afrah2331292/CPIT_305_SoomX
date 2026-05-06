@@ -3,19 +3,21 @@ package soomXDatabase;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.time.LocalDate;
 
 public class ProductDAO {
 
-    public static void insertProduct(String name, String description, double price) {
+    public static void insertProduct(String name, String description, double price,  LocalDate date, String time) {
 
         try (Connection con = DBConnection.getConnection()) {
 
-            String sql = "INSERT IGNORE INTO Product (name, description, price) VALUES (?, ?, ?)";
+            String sql = "INSERT IGNORE INTO Product (name, description, price,date,clock) VALUES (?, ?, ?, ? ,?)";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, name);
             ps.setString(2, description);
             ps.setDouble(3, price);
-
+            ps.setDate(4, java.sql.Date.valueOf(date));
+            ps.setString(5, time);
             ps.executeUpdate();
 
 

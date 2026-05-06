@@ -24,8 +24,11 @@ public class DatabaseSetup {
             stat.executeUpdate(
                     "CREATE TABLE IF NOT EXISTS Product (" +
                             "id INT PRIMARY KEY AUTO_INCREMENT, " +
-                            "name VARCHAR(100) UNIQUE, "+                            "description TEXT, " +
-                            "price DOUBLE" +
+                            "name VARCHAR(100) UNIQUE, "+
+                            "description TEXT, " +
+                            "price DOUBLE," +
+                            "date DATE,"+
+                            "clock VARCHAR (9)"+
                             ")"
             );
 

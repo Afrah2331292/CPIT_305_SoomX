@@ -29,27 +29,9 @@ public class AdminController {
     @FXML private HBox productsBar;
     @FXML private Label selectedProductLabel;
 
-    @FXML private Label highestBidLabel;
-    @FXML private Label totalBidsLabel;
 
-    @FXML private Label highestBidLabel2;
-    @FXML private Label totalBidsLabel2;
 
-    @FXML private Label highestBidLabel3;
-    @FXML private Label totalBidsLabel3;
 
-    @FXML private DatePicker product1EndDatePicker;
-    @FXML private TextField product1TimeField;
-
-    @FXML private DatePicker product2EndDatePicker;
-    @FXML private TextField product2TimeField;
-
-    @FXML private DatePicker product3EndDatePicker;
-    @FXML private TextField product3TimeField;
-
-    @FXML private ImageView productImage1;
-    @FXML private ImageView productImage2;
-    @FXML private ImageView productImage3;
 
     @FXML private TableView<Bid> tableView;
 
@@ -90,11 +72,7 @@ public class AdminController {
                 controller.setData(
                         name,                    // من DB
                         imagePath,               // من الملف
-                        description,             // من DB
-                        "Current Bid",
-                        "Total Bids",
-                        String.valueOf(price),   // من DB
-                        "0"
+                        description
                 );
 
                 controller.setProductID(id);
@@ -107,47 +85,9 @@ public class AdminController {
         }
     }
 
-    // Change label when Product 1 is clicked
-    @FXML
-    private void selectProduct1(MouseEvent event) {
-        selectedProductLabel.setText("White Rare Falcon");
-    }
 
-    // Change label when Product 2 is clicked
-    @FXML
-    private void selectProduct2(MouseEvent event) {
-        selectedProductLabel.setText("Desert Camel");
-    }
 
-    // Change label when Product 3 is clicked
-    @FXML
-    private void selectProduct3(MouseEvent event) {
-        selectedProductLabel.setText("Ancient Saudi Painting");
-    }
 
-    // Apply rounded corners to image
-    private void makeRounded(ImageView imageView) {
-
-        Rectangle clip = new Rectangle();
-        clip.setArcWidth(30);
-        clip.setArcHeight(30);
-
-        clip.widthProperty().bind(imageView.fitWidthProperty());
-        clip.heightProperty().bind(imageView.fitHeightProperty());
-
-        imageView.setClip(clip);
-    }
-
-    // Add empty rows so table always looks full
-    private void fillEmptyRows() {
-
-        ObservableList<Bid> items = tableView.getItems();
-        int currentRows = items.size();
-
-        for (int i = currentRows; i < DESIRED_ROWS; i++) {
-              items.add(new Bid("", "", "", ""));
-        }
-    }
 
 
     @FXML

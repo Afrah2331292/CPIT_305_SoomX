@@ -87,7 +87,7 @@ public class ProductCardController implements Initializable {
         Product_Description.setText(productDescription);
         Current_Bid_Title.setText(currentBidTitle);
         Total_Bids_Title.setText(totalBidsTitle);
-        Current_Bid_Price.setText(currentBidPrice);
+        Current_Bid_Price.setText(currentBidPrice+"$");
         Total_Bids_Number.setText(totalBidsNumber);
 
         // تنظيف السعر من أي رموز
@@ -135,40 +135,29 @@ public class ProductCardController implements Initializable {
     private void handlePlaceBid() {
 
         int bidValue = Spinner_Price_Min_Teller.getValue();
-
         String username = Session.currentUsername;
-
         int id = getProductID();
 
-        System.out.println("User bidding: " + username);
-        System.out.println("Product ID: " + id);
+        boolean success = BidDAO.insertBid(bidValue, username, id);
 
-        BidDAO.insertBid(bidValue,username,id);
+        if (success) {
+            Current_Bid_Price.setText(String.valueOf(bidValue));
 
+            int total = Integer.parseInt(Total_Bids_Number.getText());
+            total++;
+            Total_Bids_Number.setText(String.valueOf(total));
 
+            SpinnerValueFactory<Integer> newFactory =
+                    new SpinnerValueFactory.IntegerSpinnerValueFactory(
+                            bidValue + 200,
+                            bidValue + 10000,
+                            bidValue + 200,
+                            200
+                    );
 
-
-
-        // تحديث السعر الحالي
-        Current_Bid_Price.setText(String.valueOf(bidValue));
-         //dkkfkf
-        // زيادة عدد المزايدات
-        int total = Integer.parseInt(Total_Bids_Number.getText());
-        total++;
-        Total_Bids_Number.setText(String.valueOf(total));
-
-        // 🔥 إعادة إنشاء Spinner ليبدأ من السعر الجديد +200
-        SpinnerValueFactory<Integer> newFactory =
-                new SpinnerValueFactory.IntegerSpinnerValueFactory(
-                        bidValue + 200,
-                        bidValue + 10000,
-                        bidValue + 200,
-                        200
-                );
-
-        Spinner_Price_Min_Teller.setValueFactory(newFactory);
+            Spinner_Price_Min_Teller.setValueFactory(newFactory);
+        }
     }
-
 
 
 
