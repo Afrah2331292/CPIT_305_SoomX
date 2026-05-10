@@ -1,4 +1,4 @@
-/com/example/soomx1/images/Saudi_Arabia_Ai|White Rare Falcon|
-/com/example/soomx1/images/Camel_image|Desert Camel|
-/com/example/soomx1/images/Camel_paint_image|
-/com/example/soomx1/images/Sword_image|
+/com/example/soomx1/images/Saudi_Arabia_Ai
+/com/example/soomx1/images/Camel_image
+/com/example/soomx1/images/Camel_paint_image
+/com/example/soomx1/images/Sword_image

@@ -2,71 +2,49 @@ package com.example.soomx1;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
 import javafx.scene.shape.SVGPath;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import soomXDatabase.BidDAO;
 
-import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static soomXDatabase.ProductDAO.getProductPrice;
+
 public class ProductCardController implements Initializable {
+
+    private Runnable refreshStats;
     private int productID;
 
-
-    @FXML
-    private Label Current_Bid_Price;
-
-    @FXML
-    private Label Current_Bid_Title;
-
-    @FXML
-    private Label Total_Bids_Title;
-
-    @FXML
-    private Label Product_Description;
-
-    @FXML
-    private ImageView productImage;
-
-    @FXML
-    private Label productName;
-
-    @FXML
-    private Label Total_Bids_Number;
-
-    @FXML
-    private Spinner<Integer> Spinner_Price_Min_Teller;
+    @FXML private Label Current_Bid_Price;
+    @FXML private Label Current_Bid_Title;
+    @FXML private Label Total_Bids_Title;
+    @FXML private Label Product_Description;
+    @FXML private ImageView productImage;
+    @FXML private Label productName;
+    @FXML private Label Total_Bids_Number;
+    @FXML private Spinner<Integer> Spinner_Price_Min_Teller;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        // قيمة مؤقتة إلى أن يتم استدعاء setDat
-        SpinnerValueFactory<Integer> valueFactory =
-                new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 1000, 1);
+        Spinner_Price_Min_Teller.setValueFactory(
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 1000, 1)
+        );
 
-        Spinner_Price_Min_Teller.setValueFactory(valueFactory);
-
-        // منع النزول أقل من الحد الأدنى (حماية إضافية)
         Spinner_Price_Min_Teller.valueProperty().addListener((obs, oldValue, newValue) -> {
+
             SpinnerValueFactory.IntegerSpinnerValueFactory vf =
-                    (SpinnerValueFactory.IntegerSpinnerValueFactory) Spinner_Price_Min_Teller.getValueFactory();
+                    (SpinnerValueFactory.IntegerSpinnerValueFactory)
+                            Spinner_Price_Min_Teller.getValueFactory();
 
             if (newValue < vf.getMin()) {
                 vf.setValue(vf.getMin());
-
             }
         });
     }
@@ -77,92 +55,104 @@ public class ProductCardController implements Initializable {
                         String currentBidTitle,
                         String totalBidsTitle,
                         String currentBidPrice,
-                        String totalBidsNumber) {
-        productName.setWrapText(true); // مهم جداً عشان النص ينزل سطر
+                        String totalBidsNumber,
+                        int productID) {
+
+        this.productID = productID;
+
+        productName.setWrapText(true);
         productName.setMinWidth(Region.USE_COMPUTED_SIZE);
         productName.setMaxWidth(Double.MAX_VALUE);
 
         productName.setText(name);
-        productImage.setImage(new Image(imagePath));
         Product_Description.setText(productDescription);
         Current_Bid_Title.setText(currentBidTitle);
         Total_Bids_Title.setText(totalBidsTitle);
-        Current_Bid_Price.setText(currentBidPrice+"$");
+        Current_Bid_Price.setText(currentBidPrice + "$");
         Total_Bids_Number.setText(totalBidsNumber);
 
-        // تنظيف السعر من أي رموز
-        String cleanPrice = currentBidPrice.replaceAll("[^0-9]", "");
-        int currentPrice = 0;
+        productImage.setImage(new Image(imagePath));
+        productImage.setPreserveRatio(false);
 
-        if (!cleanPrice.isEmpty()) {
-            currentPrice = Integer.parseInt(cleanPrice);
-        }
+        SVGPath clip = new SVGPath();
 
-        // 🔥 إنشاء Factory جديدة بالقيم الصحيحة
-        SpinnerValueFactory<Integer> newFactory =
-                new SpinnerValueFactory.IntegerSpinnerValueFactory(
-                        currentPrice + 200,   // أقل قيمة
-                        currentPrice + 10000, // أعلى قيمة
-                        currentPrice + 200,   // القيمة الابتدائية
-                        200                   // مقدار الزيادة
-                );
-
-        Spinner_Price_Min_Teller.setValueFactory(newFactory);
-
-        // قص الصورة بزوايا علوية مدورة
-        SVGPath svgClip = new SVGPath();
-        svgClip.setContent(
-                "M0,25 " +
-                        "Q0,0 18,0 " +
-                        "L228,0 " +
-                        "Q240,0 240,18 " +
-                        "L240,175 " +
-                        "L0,175 " +
-                        "Z"
+        clip.setContent(
+                "M0,25 Q0,0 18,0 " +
+                        "L228,0 Q240,0 240,18 " +
+                        "L240,175 L0,175 Z"
         );
 
-        productImage.setPreserveRatio(false);
-        productImage.setClip(svgClip);
+        productImage.setClip(clip);
+
+        try {
+
+            int highestBid = (int) BidDAO.getHighestBid(this.productID);
+            int productPrice = (int) getProductPrice(this.productID);
+
+            if (highestBid > 0) {
+                updateSpinner(highestBid + 200);
+            } else {
+                updateSpinner(productPrice + 200);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-
-
-
-
-
-
 
     @FXML
     private void handlePlaceBid() {
 
-        int bidValue = Spinner_Price_Min_Teller.getValue();
-        String username = Session.currentUsername;
-        int id = getProductID();
+        Spinner_Price_Min_Teller.commitValue();
 
-        boolean success = BidDAO.insertBid(bidValue, username, id);
+        try {
 
-        if (success) {
-            Current_Bid_Price.setText(String.valueOf(bidValue));
+            int highestBid = (int) BidDAO.getHighestBid(productID);
+            int bidValue = Spinner_Price_Min_Teller.getValue();
 
-            int total = Integer.parseInt(Total_Bids_Number.getText());
-            total++;
-            Total_Bids_Number.setText(String.valueOf(total));
+            if (bidValue <= highestBid) {
+                return;
+            }
 
-            SpinnerValueFactory<Integer> newFactory =
-                    new SpinnerValueFactory.IntegerSpinnerValueFactory(
-                            bidValue + 200,
-                            bidValue + 10000,
-                            bidValue + 200,
-                            200
-                    );
+            String result = AuctionClient.sendBid(
+                    Session.currentUsername,
+                    productID,
+                    bidValue
+            );
 
-            Spinner_Price_Min_Teller.setValueFactory(newFactory);
+            if (result.equals("ACCEPT")) {
+
+                Current_Bid_Price.setText(bidValue + "$");
+
+                Total_Bids_Number.setText(BidDAO.TotalBids(productID));
+
+                updateSpinner(bidValue + 200);
+
+                if (refreshStats != null) {
+                    refreshStats.run();
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
+    private void updateSpinner(int min) {
 
+        Spinner_Price_Min_Teller.setValueFactory(
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(
+                        min,
+                        min + 10000,
+                        min,
+                        200
+                )
+        );
+    }
 
-
-
+    public void setRefreshStats(Runnable refreshStats) {
+        this.refreshStats = refreshStats;
+    }
 
     public void setProductID(int productID) {
         this.productID = productID;
@@ -171,7 +161,4 @@ public class ProductCardController implements Initializable {
     public int getProductID() {
         return productID;
     }
-
-
-
 }

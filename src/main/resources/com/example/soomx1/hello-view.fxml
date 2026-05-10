@@ -95,11 +95,12 @@
                   <Image url="@images/ProfileLogo.png" />
                </image>
             </ImageView>
-            <Label fx:id="Hi" layoutX="112.0" layoutY="36.0" text="Hi, " />
-            <Label fx:id="User_Name" layoutX="152.0" layoutY="35.0" text="Afrah" />
+            <Label fx:id="Hi" layoutX="112.0" layoutY="36.0" text="Hey," />
+            <Label fx:id="User_Name" layoutX="171.0" layoutY="35.0" text="Sam" />
             <Button fx:id="log_Out" layoutX="9.0" layoutY="4.0" mnemonicParsing="false" onAction="#Log_Out_Action" prefHeight="26.0" prefWidth="114.0" text="Log Out" textFill="WHITE" />
-            <Text fx:id="Total_Bids_txt" layoutX="379.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="Total_Bids_txt" layoutX="370.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
             <Text fx:id="Total_Value_txt" layoutX="673.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="Active_Auctions_txt" layoutX="79.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
 
             <!-- _____________________________________________________ -->
 

@@ -38,40 +38,33 @@ public class signUpController {
 
 
 
-    public void Login(ActionEvent event) throws IOException {
+    public void Cancel(ActionEvent event) {
 
-        FXMLLoader fxmlLoader =
-                new FXMLLoader(Main.class.getResource("login.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource())
+                .getScene()
+                .getWindow();
 
-        root = fxmlLoader.load();
-
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        scene = new Scene(root);
-
-        stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.show();
+        stage.close();
     }
-
 
     // from login to user page
     @FXML
     public void switchtoUser(ActionEvent event) throws IOException {
+        String name = userNameTextFiled.getText();
         String email = EmailTextFiled.getText();
         String password = passwordPasswordFiled11.getText();
         String phone = phonenumberTextFiled.getText();
         String username = userNameTextFiled.getText();
 
-        if (validateInput(email, password, phone)) {
+        if (validateInput(name,email, password, phone)) {
             UserDAO.insertUser(username, email, phone, password, 2);
 
 
 
-            Parent root = FXMLLoader.load(Main.class.getResource("hello-view.fxml"));
+            Parent root = FXMLLoader.load(Main.class.getResource("login.fxml"));
 
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root, 950, 700));
+            stage.setScene(new Scene(root, 900, 600));
             stage.centerOnScreen();
             stage.show();
         }
@@ -86,7 +79,13 @@ public class signUpController {
 
 
 
-    public boolean validateInput(String email, String password, String phone) {
+    public boolean validateInput(String name, String email, String password, String phone) {
+
+         if(name == null){
+             showAlert("Username should not be empty!!");
+             return false;
+         }
+
         // Check for the email
         if (!email.endsWith("@gmail.com")) {
             showAlert("Email must be a Gmail (@gmail.com)");

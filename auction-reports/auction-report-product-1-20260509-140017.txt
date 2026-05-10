@@ -1,0 +1,50 @@
+====================================================
+                SOOMX AUCTION REPORT                
+====================================================
+
+Generated Date : 2026-05-09 14:00:17
+Product ID     : 1
+Product Name   : Product 1
+Total Bids     : 24
+
+====================================================
+                    WINNER DETAILS                  
+====================================================
+Winner Name        : rawan mohsen
+Winning Bid        : 3000.0 $
+Contact Info       : Phone: 0540912353 | Email: rawn@gmail.com
+
+====================================================
+                     BID HISTORY                    
+====================================================
+
+Bid ID     User            Bid Price       Contact                       
+--------------------------------------------------------------------------
+2          HANA            1400.0 $        Phone: 044 | Email: SS        
+6          HANA            1600.0 $        Phone: 044 | Email: SS        
+7          HANA            1800.0 $        Phone: 044 | Email: SS        
+8          HANA            2000.0 $        Phone: 044 | Email: SS        
+16         HANA            2200.0 $        Phone: 044 | Email: SS        
+35         HANA            2400.0 $        Phone: 044 | Email: SS        
+40         HANA            2600.0 $        Phone: 044 | Email: SS        
+41         HANA            2800.0 $        Phone: 044 | Email: SS        
+46         HANA            3200.0 $        Phone: 044 | Email: SS        
+47         HANA            3400.0 $        Phone: 044 | Email: SS        
+48         HANA            3600.0 $        Phone: 044 | Email: SS        
+49         HANA            3800.0 $        Phone: 044 | Email: SS        
+50         HANA            4000.0 $        Phone: 044 | Email: SS        
+51         HANA            4200.0 $        Phone: 044 | Email: SS        
+52         HANA            4400.0 $        Phone: 044 | Email: SS        
+53         HANA            4600.0 $        Phone: 044 | Email: SS        
+54         HANA            4800.0 $        Phone: 044 | Email: SS        
+59         HANA            5000.0 $        Phone: 044 | Email: SS        
+60         HANA            5200.0 $        Phone: 044 | Email: SS        
+61         HANA            5400.0 $        Phone: 044 | Email: SS        
+62         HANA            5600.0 $        Phone: 044 | Email: SS        
+63         HANA            5800.0 $        Phone: 044 | Email: SS        
+64         HANA            6000.0 $        Phone: 044 | Email: SS        
+43         rawan mohsen    3000.0 $        Phone: 0540912353 | Email: rawn@gmail.com
+
+====================================================
+                 END OF AUCTION REPORT              
+====================================================

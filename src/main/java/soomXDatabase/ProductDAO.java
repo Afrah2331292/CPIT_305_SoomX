@@ -1,8 +1,7 @@
 package soomXDatabase;
 
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+import java.sql.*;
 import java.time.LocalDate;
 
 public class ProductDAO {
@@ -28,6 +27,26 @@ public class ProductDAO {
     }
 
 
+    // get the product table from the database
+    public static ResultSet getAllProduct() {
+
+        try {
+            Connection con = DBConnection.getConnection();
+
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM Product");
+
+            ResultSet rs = ps.executeQuery();
+
+            return rs;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+
     // for updating the product price
     public static void updateProductPrice(Connection con, int productID, double newPrice) {
 
@@ -43,6 +62,87 @@ public class ProductDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static Date getDateforProduct(int productID) {
+
+        String sql = "SELECT date FROM Product WHERE id = ?";
+
+        try (Connection con = DBConnection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, productID);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getDate("date");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public static String getClockforProduct(int productID) {
+
+        String sql = "SELECT clock FROM Product WHERE id = ?";
+
+        try (Connection con = DBConnection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, productID);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getString("clock");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+
+    public static String numberOfProduct() {
+        String sql = "SELECT COUNT(*) FROM Product";
+
+        try (Connection con = DBConnection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            if (rs.next()) return rs.getInt(1)+"";
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0+"";
+    }
+
+    public static int getProductPrice(int productID) {
+        String sql = "SELECT price FROM Product WHERE id = ?";
+
+        try (Connection con = DBConnection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, productID);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt("price");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return 0;
     }
 
 }

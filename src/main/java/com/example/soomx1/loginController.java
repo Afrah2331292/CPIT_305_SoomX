@@ -16,7 +16,8 @@ import java.io.IOException;
 public class loginController {
 
     private Stage stage;
-
+    private Parent root;
+    private Scene scene;
 
 
 
@@ -91,11 +92,19 @@ public class loginController {
 
 
     // cancel login
-    public  void  Cancel(ActionEvent event){
-        stage= (Stage) cancelButton.getScene().getWindow();
+    public  void  switchtoSignin(ActionEvent event) throws IOException{
+        FXMLLoader fxmlLoader =
+                new FXMLLoader(Main.class.getResource("signUp.fxml"));
 
+        root = fxmlLoader.load();
 
-        stage.close();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        scene = new Scene(root);
+
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.show();
 
 
     }

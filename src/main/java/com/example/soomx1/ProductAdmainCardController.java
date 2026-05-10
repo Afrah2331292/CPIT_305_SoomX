@@ -1,73 +1,49 @@
 package com.example.soomx1;
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
+
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.control.Label;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
 import javafx.scene.shape.SVGPath;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import soomXDatabase.BidDAO;
+import javafx.scene.text.Text;
 
-import java.awt.event.ActionEvent;
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.sql.Date;
+import soomXDatabase.BidDAO;
+import soomXDatabase.ProductDAO;
 
 public class ProductAdmainCardController {
     private int productID;
 
 
-    @FXML
-    private Label Current_Bid_Price;
+   @FXML
+   private Text Highest_Bid_Number;
 
-    @FXML
-    private Label Current_Bid_Title;
 
-    @FXML
-    private Label Total_Bids_Title;
-
-    @FXML
-    private Label Product_Description;
+   @FXML
+   private Text Total_Bids_number;
 
     @FXML
     private ImageView productImage;
 
     @FXML
-    private Label productName;
+    private Label Acution_EndTime;
 
     @FXML
-    private Label Total_Bids_Number;
+    private Label Acution_Endate;
 
 
-
-    public void setData(String name,
-                        String imagePath,
-                        String productDescription)
+    public void setData(int productID,
+                        String imagePath)
 
 
     {
-        productName.setWrapText(true); // مهم جداً عشان النص ينزل سطر
-        productName.setMinWidth(Region.USE_COMPUTED_SIZE);
-        productName.setMaxWidth(Double.MAX_VALUE);
-
-        productName.setText(name);
+        //_________________________________________________
+        // manage photo placement
         productImage.setImage(new Image(imagePath));
-        Product_Description.setText(productDescription);
 
 
-
-
-
-        // قص الصورة بزوايا علوية مدورة
+        // Clipping the photo corners in a rounded shape
         SVGPath svgClip = new SVGPath();
         svgClip.setContent(
                 "M0,25 " +
@@ -81,6 +57,29 @@ public class ProductAdmainCardController {
 
         productImage.setPreserveRatio(false);
         productImage.setClip(svgClip);
+
+
+        //______________________________________________________
+        // Retrieve the highest bid and display it on the card
+        double highestBid = 0;
+        try {
+             highestBid = BidDAO.getHighestBid(productID);
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        Highest_Bid_Number.setText(highestBid+ " RS");
+     //________________________________________________________________
+
+
+        Total_Bids_number.setText(BidDAO.TotalBids(productID));
+
+        Acution_EndTime.setText(ProductDAO.getClockforProduct(productID));
+
+        Date date = ProductDAO.getDateforProduct(productID);
+        Acution_Endate.setText(date != null ? date.toString() : "No date");
+
+
     }
 
 
@@ -99,9 +98,6 @@ public class ProductAdmainCardController {
         this.productID = productID;
     }
 
-    public int getProductID() {
-        return productID;
-    }
 
 
 

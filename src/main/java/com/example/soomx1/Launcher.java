@@ -46,8 +46,8 @@ public class Launcher {
                 "10:15 AM"
         );
 
-        UserDAO.insertUser("AFRAH","AFRA","049","AFRAH",1);
-        UserDAO.insertUser("HANA","SS","044","HANA",2);
+        UserDAO.insertUser("Admin","Admin@gmail.com","0559900045","0000",1);
+        UserDAO.insertUser("Fake_User","FakeUser@gmail.com","0559900045","0000",2);
 
         Application.launch(Main.class, args);
 

@@ -50,7 +50,7 @@
             <ScrollPane fitToHeight="true" hbarPolicy="NEVER" layoutX="0.0" layoutY="70.0" pannable="true" prefHeight="454.0" prefWidth="952.0" styleClass="cards-scroll" vbarPolicy="NEVER">
 
                <content>
-                   <HBox fx:id="productsBar" layoutX="30" layoutY="120" prefHeight="478.0" prefWidth="950.0" spacing="50" />
+                   <HBox fx:id="productsBar" alignment="BASELINE_CENTER" layoutX="30" layoutY="120" prefHeight="478.0" prefWidth="950.0" spacing="50" />
                </content>
             </ScrollPane>
 
@@ -58,7 +58,7 @@
             <VBox alignment="CENTER" layoutY="525.0" maxWidth="1039.0" prefHeight="12.0" prefWidth="950.0" styleClass="name-bar">
 
                <children>
-                  <Label fx:id="selectedProductLabel" alignment="BASELINE_LEFT" prefHeight="34.0" prefWidth="191.0" styleClass="product-name" text="selectedProductLabel">
+                  <Label fx:id="selectedProductLabel" alignment="BASELINE_LEFT" prefHeight="39.0" prefWidth="206.0" styleClass="product-name" text="selectedProduct">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -66,14 +66,30 @@
                </children>
             </VBox>
 
+
+            <!-- Generate Report Button -->
+            <Button
+                    layoutX="760.0"
+                    layoutY="540.0"
+                    mnemonicParsing="false"
+                    onAction="#generateAuctionReport"
+                    prefHeight="35.0"
+                    prefWidth="160.0"
+                    text="Generate Report" />
+
+            <!-- Table -->
+
+
             <!-- Table -->
             <TableView fx:id="tableView" layoutY="587.0" prefHeight="313.0" prefWidth="950.0">
 
                <columns>
-                  <TableColumn prefWidth="150.0" text="Bid ID" />
-                  <TableColumn prefWidth="200.0" text="Name" />
-                  <TableColumn prefWidth="150.0" text="Bid Price" />
-                  <TableColumn prefWidth="490.0000203450521" text="Contact Info" />
+                  <TableColumn fx:id="bidIdColumn" prefWidth="150.0" text="Bid ID" />
+                  <TableColumn fx:id="nameColumn" prefWidth="200.0" text="Name" />
+                  <TableColumn fx:id="bidPriceColumn" prefWidth="150.0" text="Bid Price" />
+                  <TableColumn fx:id="contactInfoColumn" prefWidth="490.0000203450521" text="Contact Info" />
+
+
                </columns>
 
                <styleClass>
